@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5a112558-e718-4602-aecd-8e05a47b4978" name="Changes" comment="clean up code" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="1.2" />
+  </component>
+  <component name="ProjectId" id="2BVfGbf8W9wyefzzBJ0VsJfxp1v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/home/jaehyeong/git/repository-group/MCTS",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/include" />
+      <recent name="$PROJECT_DIR$/cmake-build-debug/header" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a112558-e718-4602-aecd-8e05a47b4978" name="Changes" comment="" />
+      <created>1656996078087</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656996078087</updated>
+      <workItem from="1656996080117" duration="11952000" />
+      <workItem from="1657070287087" duration="21787000" />
+      <workItem from="1657170467818" duration="11698000" />
+      <workItem from="1657255126574" duration="11334000" />
+      <workItem from="1657603268263" duration="7444000" />
+      <workItem from="1657675759091" duration="13261000" />
+      <workItem from="1657850826244" duration="4776000" />
+      <workItem from="1658106107864" duration="13888000" />
+      <workItem from="1658192366959" duration="20156000" />
+      <workItem from="1658277814841" duration="15058000" />
+      <workItem from="1658365930725" duration="135000" />
+      <workItem from="1658366207118" duration="14429000" />
+      <workItem from="1658714722944" duration="18695000" />
+      <workItem from="1658821706862" duration="211000" />
+      <workItem from="1658821953742" duration="2960000" />
+      <workItem from="1658897913345" duration="35010000" />
+      <workItem from="1659068215184" duration="883000" />
+      <workItem from="1659069181895" duration="725000" />
+      <workItem from="1659070927044" duration="1354000" />
+      <workItem from="1659401611522" duration="1213000" />
+      <workItem from="1659422615410" duration="117000" />
+      <workItem from="1661130853746" duration="721000" />
+      <workItem from="1661132351691" duration="2082000" />
+      <workItem from="1661217959484" duration="4898000" />
+      <workItem from="1661302895751" duration="1203000" />
+      <workItem from="1661304465739" duration="3879000" />
+      <workItem from="1661318121355" duration="257000" />
+    </task>
+    <task id="LOCAL-00001" summary="edited CMakeLists.txt">
+      <created>1658822369346</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1658822369346</updated>
+    </task>
+    <task id="LOCAL-00002" summary="commit test">
+      <created>1658823575221</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658823575221</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit test">
+      <created>1658823641078</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658823641078</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix the backpropagation error">
+      <created>1658907663180</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1658907663180</updated>
+    </task>
+    <task id="LOCAL-00005" summary="change simulation systems">
+      <created>1658999329208</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658999329208</updated>
+    </task>
+    <task id="LOCAL-00006" summary="clean up code">
+      <created>1659068389837</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659068389837</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="edited CMakeLists.txt" />
+    <MESSAGE value="commit test" />
+    <MESSAGE value="fix the backpropagation error" />
+    <MESSAGE value="change simulation systems" />
+    <MESSAGE value="clean up code" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean up code" />
+  </component>
+</project>
