@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/tictaetoe.dir/example/tictaetoe/main.cpp.o CMakeFiles/tictaetoe.dir/example/tictaetoe/TicTaeToe.cpp.o CMakeFiles/tictaetoe.dir/example/tictaetoe/TTTmcts.cpp.o -o tictaetoe 

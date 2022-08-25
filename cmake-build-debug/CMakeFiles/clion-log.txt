@@ -1,1 +1,4 @@
-CMakeLists.txt not found in /home/jaehyeong/git/repository-group/MCTS Select CMakeLists.txt
+/snap/clion/204/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G "CodeBlocks - Unix Makefiles" -S /home/jaehyeong/git/repository-group/MCTS -B /home/jaehyeong/git/repository-group/MCTS/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jaehyeong/git/repository-group/MCTS/cmake-build-debug
