@@ -25,6 +25,7 @@ public:
 
 
     void startGame();
+    void AIstartGame(int input);
     std::vector<std::string> place = {"0","(1)","(2)","(3)","(4)","(5)","(6)","(7)","(8)","(9)"};
     int iter;
     int Gameover;

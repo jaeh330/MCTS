@@ -14,14 +14,15 @@
 struct Node
 {
 // first Node declaration
-    Node() : val(0), vis(0), uct(0), parentND((nullptr)), childNDs(), layer(1), pos(0) {}
+    Node() : val(0), vis(0), uct(0), parentND((nullptr)), childNDs(), layer(1), pos(0), full(0) {}
 // After first Node declaration
-    Node(struct Node* paND, int place) : val(0), vis(0), uct(0), parentND(paND), childNDs(), layer(paND->layer+1), pos(place) { paND->childNDs.push_back(this);}
+    Node(struct Node* paND, int place) : val(0), vis(1), uct(0), parentND(paND), childNDs(), layer(paND->layer+1), pos(place), full(0) { paND->childNDs.push_back(this);}
     
     int val;
     int vis;
     int pos;
     int layer;
+    int full;
     double uct;
     struct Node* parentND;
     std::vector<struct Node*> childNDs;
@@ -43,7 +44,9 @@ public:
 private:
     void initialize();
     void setUCT(Node* nd);
+    void setFinalUCT();
     std::vector<int> findPlaceable();
+    std::vector<int> findsimPlaceable();
 
     //    mcts stage
     void Selection();
@@ -51,6 +54,7 @@ private:
     double Simulation(int layer);
     void Backpropagation(double result);
     double decideWinner();
+    void visualPlace();
 
 
     Node* InitNd;
@@ -60,8 +64,12 @@ private:
     int NodeCountLimit;
     int SIteration;
     int Iteration;
+    int Selfull;
+    int ALLfull;
     int SimulationResult;
     int simGameover;
+    int mctsover;
+    int winner;
     std::vector<int> Placeable;
     std::vector<std::string> simplace;
 

@@ -7,10 +7,14 @@
 
 int main() {
     TTTmcts ai;
-    while(ai.TTT.Gameover !=1){
+    while(1){
         ai.TTT.startGame();
+        if(ai.TTT.Gameover == 1)
+            break;
         int input = ai.startMCTS();
-        std::cout<<input<<std::endl;
+        ai.TTT.AIstartGame(input);
+        if(ai.TTT.Gameover == 1)
+            break;
     }
     return 0;
 }

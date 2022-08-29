@@ -12,9 +12,125 @@ void TicTaeToe::startGame(){
         turn= " O ";
     }
 
-    std::cout << "It is a" << turn << "turn !!" << std::endl;
+    std::cout << "It is a" << turn << "turn !! iter is "<<iter<< std::endl;
     std::cout << "Where do you want to put Go??" << std::endl;
     std::cin >> input;
+    switch (input)
+    {
+        case 1:
+            if(exist[1]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[1] = turn;
+            exist[1]=1;
+            iter++;
+            break;
+        case 2:
+            if(exist[2]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[2] = turn;
+            exist[2]=1;
+            iter++;
+            break;
+        case 3:
+            if(exist[3]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[3] = turn;
+            exist[3]=1;
+            iter++;
+            break;
+        case 4:
+            if(exist[4]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[4] = turn;
+            exist[4]=1;
+            iter++;
+            break;
+        case 5:
+            if(exist[5]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[5] = turn;
+            exist[5]=1;
+            iter++;
+            break;
+        case 6:
+            if(exist[6]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[6] = turn;
+            exist[6]=1;
+            iter++;
+            break;
+        case 7:
+            if(exist[7]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[7] = turn;
+            exist[7]=1;
+            iter++;
+            break;
+        case 8:
+            if(exist[8]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[8] = turn;
+            exist[8]=1;
+            iter++;
+            break;
+        case 9:
+            if(exist[9]==1){
+                std::cout << "You cannot place here! -_-";
+                std::cout << std::endl;
+                break;
+            }
+            place[9] = turn;
+            exist[9]=1;
+            iter++;
+            break;
+        default:
+            std::cout << "You cannot place here! -_-";
+            std::cout << std::endl;
+            break;
+    }
+
+    std::cout << std::endl;
+    std::cout << place[1] << "  | "<< place[2] << " |  " << place[3] << std::endl;
+    std::cout << "-----------------" << std::endl;
+    std::cout << place[4] << "  | "<< place[5] << " |  " << place[6] << std::endl;
+    std::cout << "-----------------" << std::endl;
+    std::cout << place[7] << "  | "<< place[8] << " |  " << place[9] << std::endl;
+    std::cout << std::endl;
+
+    decidewinner();
+}
+
+void TicTaeToe::AIstartGame(int input){
+    if(iter%2 ==1){
+        turn = " X ";
+    }
+    else{
+        turn= " O ";
+    }
     switch (input)
     {
         case 1:
