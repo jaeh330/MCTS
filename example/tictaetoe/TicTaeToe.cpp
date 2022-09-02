@@ -197,11 +197,11 @@ void TicTaeToe::AIstartGame(int input){
             if(exist[7]==1){
                 std::cout << "You cannot place here! -_-";
                 std::cout << std::endl;
-                iter--;
                 break;
             }
             place[7] = turn;
             exist[7]=1;
+            iter++;
             break;
         case 8:
             if(exist[8]==1){

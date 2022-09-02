@@ -28,7 +28,6 @@
       <change beforePath="$PROJECT_DIR$/example/tictaetoe/TTTmcts.h" beforeDir="false" afterPath="$PROJECT_DIR$/example/tictaetoe/TTTmcts.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/tictaetoe/TicTaeToe.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/tictaetoe/TicTaeToe.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/tictaetoe/TicTaeToe.h" beforeDir="false" afterPath="$PROJECT_DIR$/example/tictaetoe/TicTaeToe.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/tictaetoe/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/tictaetoe/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +130,9 @@
       <workItem from="1661318121355" duration="3780000" />
       <workItem from="1661388254677" duration="15165000" />
       <workItem from="1661480357751" duration="11553000" />
-      <workItem from="1661733894791" duration="20253000" />
+      <workItem from="1661733894791" duration="20380000" />
+      <workItem from="1661820543391" duration="10759000" />
+      <workItem from="1662097608760" duration="611000" />
     </task>
     <task id="LOCAL-00001" summary="edited CMakeLists.txt">
       <created>1658822369346</created>

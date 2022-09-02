@@ -3,44 +3,45 @@
 //
 #include "TTTmcts.h"
 
-// MCTS iteration setting and initialize
 int TTTmcts::startMCTS() {
     InitNd = new Node();
     mctsover=0;
     for(int i =0; i<Iteration; i++){
         std::cout<<"MCTS iteration: "<<i+1 <<std::endl;
-        Selection();
+        int Se = Selection();
         if(mctsover == 1){
             std::cout<<"mcts over"<<std::endl;
             break;
         }
-        Expansion();
-        if(mctsover == 1){
-            std::cout<<"mcts over"<<std::endl;
-            break;
+        if(Se != 10){
+            BackpropagationSe(Se);
         }
-        double val = Simulation(ExpansionNd->layer);
-        Backpropagation(val);
-        for(int i=0; i<InitNd->childNDs.size(); i++){
-            std::cout<<"Node pos: "<<InitNd->childNDs[i]->pos<<" uct: "<<InitNd->childNDs[i]->uct<<" vis: "<<InitNd->childNDs[i]->vis<<" val: "<<InitNd->childNDs[i]->val<<" || ";
+        else{
+            int Ex = Expansion();
+            if(mctsover == 1){
+                std::cout<<"mcts over"<<std::endl;
+                break;
+            }
+            if(Ex != 10)
+                Backpropagation(Ex);
+            else{
+                double val = Simulation(ExpansionNd->layer);
+                Backpropagation(val);
+            }
         }
-        std::cout<<std::endl;
     }
     setFinalUCT();
     std::cout<<std::endl;
     std::cout<<std::endl<<std::endl<<"mcts is end and select: "<<InitNd->childNDs[0]->pos<<std::endl;
     return InitNd->childNDs[0]->pos;
 }
-
-
-
 void TTTmcts::initialize(){
     std::cout<<" MCTS start!!! "<<std::endl;
     std::cout<<"How many iteration will you run?? "<<std::endl;
     std::cin>>Iteration;
 }
-
-void TTTmcts::Selection() {
+int TTTmcts::Selection() {
+    Selresult = 10;
     simGameover = 0;
     SIteration = 0;
     simplace = TTT.place;
@@ -51,6 +52,8 @@ void TTTmcts::Selection() {
         if( SelectionNd->childNDs.size() < NodeCountLimit ){
             SelectionNd->vis++;
             std::cout<<"selection node layer: "<<SelectionNd->layer << std::endl;
+            if(SelectionNd->parentND!= nullptr)
+                std::cout<< "parent's pos: "<<SelectionNd->parentND->pos<<std::endl;
             std::cout<<"============================="<<std::endl;
             break;
         }
@@ -93,13 +96,16 @@ void TTTmcts::Selection() {
                         simplace[SelectionNd->pos] = " X ";
                     else
                         simplace[SelectionNd->pos] = " O ";
+                    Selresult = decideWinner();
+                    if(Selresult != 10)
+                        return Selresult;
                 }
             }
         }
     }
+    return 10;
 }
-
-void TTTmcts::Expansion() {
+int TTTmcts::Expansion() {
     Placeable = findPlaceable();
     if(Placeable.size()==0){
         std::cout<<"Expansion placeable size is "<<0<<std::endl;
@@ -118,19 +124,9 @@ void TTTmcts::Expansion() {
         std::cout<<"Expansion node pos: " << ExpansionNd->pos <<std::endl;
         std::cout<<"============================="<<std::endl;
         Placeable.erase(std::remove(Placeable.begin(),Placeable.end(), Placeable[chooseRand]),Placeable.end());
-        if(result == 1 && ExpansionNd->layer ==2)
-        {
-            mctsover =1;
-            InitNd->childNDs[0] = ExpansionNd;
-        }
-        if(result ==-1 && ExpansionNd->layer ==3)
-        {
-            mctsover=1;
-            InitNd->childNDs[0]->pos = ExpansionNd->pos;
-        }
+        return result;
     }
 }
-
 double TTTmcts::Simulation(int layer) {
     Placeable = findsimPlaceable();
     srand(time(NULL));
@@ -148,17 +144,13 @@ double TTTmcts::Simulation(int layer) {
     }
     return winner;
 }
-
 void TTTmcts::Backpropagation(double result) {
     Node* parentNd = ExpansionNd->parentND;
     Node* presentNd = ExpansionNd;
     std::cout<<"result: "<<result<<std::endl;
     std::cout<<"============================="<<std::endl<<std::endl;
     while(presentNd->parentND != nullptr) {
-        if(presentNd->layer%2 ==0)
-            presentNd->val +=result;
-        else
-            presentNd->val -=result;
+        presentNd->val +=result;
         if(presentNd->parentND != nullptr)
         {
             for(int i=0; i<presentNd->parentND->childNDs.size(); i++)
@@ -171,16 +163,46 @@ void TTTmcts::Backpropagation(double result) {
 
     presentNd = ExpansionNd;
     while(presentNd->parentND != nullptr) {
-        std::sort(presentNd->parentND->childNDs.begin(), presentNd->parentND->childNDs.end(),[](Node* a, Node* b){return a->uct>b->uct;});
+        if(presentNd->layer%2==0)
+            std::sort(presentNd->parentND->childNDs.begin(), presentNd->parentND->childNDs.end(),[](Node* a, Node* b){return a->uct>b->uct;});
+        else
+            std::sort(presentNd->parentND->childNDs.begin(), presentNd->parentND->childNDs.end(),[](Node* a, Node* b){return b->uct>a->uct;});
         presentNd=presentNd->parentND;
     }
 }
+void TTTmcts::BackpropagationSe(double result) {
+    Node* parentNd = SelectionNd->parentND;
+    Node* presentNd = SelectionNd;
+    std::cout<<"result: "<<result<<std::endl;
+    std::cout<<"============================="<<std::endl<<std::endl;
+    while(presentNd->parentND != nullptr) {
+        presentNd->val +=result;
+        if(presentNd->parentND != nullptr)
+        {
+            for(int i=0; i<presentNd->parentND->childNDs.size(); i++)
+            {
+                setUCT(presentNd->parentND->childNDs[i]);
+            }
+        }
+        presentNd = presentNd->parentND;
+    }
 
-//UCT setting
+    presentNd = SelectionNd;
+    while(presentNd->parentND != nullptr) {
+        if(presentNd->layer%2==0)
+            std::sort(presentNd->parentND->childNDs.begin(), presentNd->parentND->childNDs.end(),[](Node* a, Node* b){return a->uct>b->uct;});
+        else
+            std::sort(presentNd->parentND->childNDs.begin(), presentNd->parentND->childNDs.end(),[](Node* a, Node* b){return b->uct>a->uct;});
+        presentNd=presentNd->parentND;
+    }
+}
 void TTTmcts::setUCT(Node* nd) {
     int t = nd->parentND->vis;
-    double c = sqrt(2); // exploration parameter - you should find this value experimentally.
-    nd->uct = double(nd->val)/double(nd->vis) + c*sqrt((log(t))/(nd->vis));
+    double c = sqrt(2);
+    if(nd->layer%2 == 0)
+        nd->uct = double(nd->val)/double(nd->vis) + c*sqrt((log(t))/(nd->vis));
+    else
+        nd->uct = double(nd->val)/double(nd->vis);
 }
 void TTTmcts::setFinalUCT() {
     for(int i =0; i<InitNd->childNDs.size(); i++)
@@ -193,17 +215,14 @@ void TTTmcts::setFinalUCT() {
 std::vector<int>  TTTmcts::findPlaceable(){
    std::vector<int> checklist={1,2,3,4,5,6,7,8,9};
    Node* checker = SelectionNd;
-   //real place
    for(int i=1; i<10; i++){
        if(simplace[i] == " O " || simplace[i]== " X "){
         checklist.erase(std::remove(checklist.begin(),checklist.end(), i),checklist.end());
        }
    }
-    //neighbor place
-    for(int i=0; i<checker->childNDs.size(); i++){
+   for(int i=0; i<checker->childNDs.size(); i++){
         checklist.erase(std::remove(checklist.begin(),checklist.end(), checker->childNDs[i]->pos),checklist.end());
-    }
-   //parent place
+   }
    while(checker->pos != 0){
        checklist.erase(std::remove(checklist.begin(),checklist.end(), checker->pos),checklist.end());
        checker = checker->parentND;
@@ -211,7 +230,6 @@ std::vector<int>  TTTmcts::findPlaceable(){
 
    return checklist;
 }
-
 std::vector<int> TTTmcts::findsimPlaceable() {
     std::vector<int> checklist={1,2,3,4,5,6,7,8,9};
     Node* checker = ExpansionNd;
@@ -226,8 +244,6 @@ std::vector<int> TTTmcts::findsimPlaceable() {
     }
     return checklist;
 }
-
-
 double TTTmcts::decideWinner(){
     for(int i=0; i<3; i++)
     {
@@ -266,7 +282,6 @@ double TTTmcts::decideWinner(){
     }
     return 10;
 }
-
 void TTTmcts::visualPlace() {
     std::cout << std::endl;
     std::cout << simplace[1] << "  | "<< simplace[2] << " |  " << simplace[3] << std::endl;
